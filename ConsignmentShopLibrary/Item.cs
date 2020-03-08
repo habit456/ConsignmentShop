@@ -13,6 +13,7 @@ namespace ConsignmentShopLibrary
         public decimal Price { get; set; }
         public bool Sold { get; set; }
         public bool PaymentDistributed { get; set; }
+        public bool InCart { get; set; }
         public Vendor Owner { get; set; }
         public string Display
         {
