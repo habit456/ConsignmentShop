@@ -82,50 +82,119 @@ namespace ConsignmentShopUI
                 Owner = store.Vendors[0]
             });
 
+            store.Items.Add(new Item
+            {
+                Title = "15lb Hexagonal Dumbbell Set",
+                Description = "Briefly used.",
+                Price = 29.99M,
+                Owner = store.Vendors[0]
+            });
+
+            store.Items.Add(new Item
+            {
+                Title = "Marilyn Manson Shirt",
+                Description = "XL size, in new condition.",
+                Price = 19.99M,
+                Owner = store.Vendors[1]
+            });
+
+            store.Items.Add(new Item
+            {
+                Title = "Lightbulbs",
+                Description = "Set of 20. Some don't work.",
+                Price = 15.55M,
+                Owner = store.Vendors[1]
+            });
+
+            store.Items.Add(new Item
+            {
+                Title = "Chair",
+                Description = "Previously used by gamer. Covered in dorito dust. Cushion sunken in. Please, someone, buy this.",
+                Price = 0.99M,
+                Owner = store.Vendors[0]
+            });
+
             store.StoreName = "Seconds Are Better";
         }
 
         private void addToCart_Click(object sender, EventArgs e)
         {
-            Item selectedItem = (Item)itemsListBox.SelectedItem;
-            if (!selectedItem.InCart)
+            if (itemsListBox.SelectedItem != null)
             {
-                selectedItem.InCart = true;
-                shoppingCartData.Add(selectedItem);
-                cartBinding.ResetBindings(false);
-            }
-            else
-            {
-                MessageBox.Show(string.Format("{0} is in cart.", selectedItem.Title));
+                Item selectedItem = (Item)itemsListBox.SelectedItem;
+                if (!selectedItem.InCart)
+                {
+                    selectedItem.InCart = true;
+                    shoppingCartData.Add(selectedItem);
+                    cartBinding.ResetBindings(false);
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("{0} is in cart.", selectedItem.Title));
+                }
             }
         }
 
         private void makePurchase_Click(object sender, EventArgs e)
         {
-            foreach(Item item in shoppingCartData)
+            decimal totalCost = CalculateTotalCost();
+
+            if (totalCost > 0)
             {
-                item.Sold = true;
-                item.Owner.PaymentDue += item.Price * (decimal)item.Owner.Commission;
-                storeProfit += (1 - (decimal)item.Owner.Commission) * item.Price;
+                DialogResult dialogResult = MessageBox.Show(
+                        string.Format("Total Cost: {0}. Make purchase?", totalCost.ToString("C")),
+                        "Confirm",
+                        MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    HandlePurchase();
+                }
             }
+        }
 
+        private void HandlePurchase()
+        {
+            HandleItems();
             shoppingCartData.Clear();
-
             itemsBinding.DataSource = store.Items.Where(x => x.Sold == false).ToList();
+            UpdateFrontEnd();
+        }
 
-            storeProfitValue.Text = string.Format("${0}", storeProfit);
-
+        private void UpdateFrontEnd()
+        {
+            storeProfitValue.Text = storeProfit.ToString("C");
             cartBinding.ResetBindings(false);
             itemsBinding.ResetBindings(false);
             vendorsBinding.ResetBindings(false);
         }
 
+        private void HandleItems()
+        {
+            foreach (Item item in shoppingCartData)
+            {
+                item.Sold = true;
+                item.Owner.PaymentDue += item.Price * (decimal)item.Owner.Commission;
+                storeProfit += (1 - (decimal)item.Owner.Commission) * item.Price;
+            }
+        }
+
+        private decimal CalculateTotalCost()
+        {
+            decimal totalCost = 0;
+            shoppingCartData.ForEach(x => totalCost += x.Price);
+            return totalCost;
+        }
+
         private void removeFromCartButton_Click(object sender, EventArgs e)
         {
-            Item item = (Item)shoppingCartListBox.SelectedItem;
-            shoppingCartData.Remove(item);
-            item.InCart = false;
-            cartBinding.ResetBindings(false);
+            if (shoppingCartListBox.SelectedItem != null)
+            {
+                Item item = (Item)shoppingCartListBox.SelectedItem;
+                shoppingCartData.Remove(item);
+                item.InCart = false;
+                cartBinding.ResetBindings(false);
+            }
         }
     }
 }

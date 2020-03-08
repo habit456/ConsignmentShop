@@ -46,7 +46,7 @@
             // 
             this.headerText.AutoSize = true;
             this.headerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headerText.Location = new System.Drawing.Point(29, 28);
+            this.headerText.Location = new System.Drawing.Point(344, 23);
             this.headerText.Name = "headerText";
             this.headerText.Size = new System.Drawing.Size(405, 37);
             this.headerText.TabIndex = 0;
