@@ -74,6 +74,7 @@
             this.addToCart.TabIndex = 3;
             this.addToCart.Text = "Add To Cart -->";
             this.addToCart.UseVisualStyleBackColor = true;
+            this.addToCart.Click += new System.EventHandler(this.addToCart_Click);
             // 
             // shoppingCartListBoxLabel
             // 
@@ -102,12 +103,13 @@
             this.makePurchase.TabIndex = 6;
             this.makePurchase.Text = "Purchase";
             this.makePurchase.UseVisualStyleBackColor = true;
+            this.makePurchase.Click += new System.EventHandler(this.makePurchase_Click);
             // 
             // ConsignmentShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 597);
+            this.ClientSize = new System.Drawing.Size(1123, 456);
             this.Controls.Add(this.makePurchase);
             this.Controls.Add(this.shoppingCartListBoxLabel);
             this.Controls.Add(this.shoppingCartListBox);
