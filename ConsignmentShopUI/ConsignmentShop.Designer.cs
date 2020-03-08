@@ -39,6 +39,7 @@
             this.vendorListBox = new System.Windows.Forms.ListBox();
             this.storeProfitLabel = new System.Windows.Forms.Label();
             this.storeProfitValue = new System.Windows.Forms.Label();
+            this.removeFromCartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // headerText
@@ -72,7 +73,7 @@
             // 
             // addToCart
             // 
-            this.addToCart.Location = new System.Drawing.Point(467, 188);
+            this.addToCart.Location = new System.Drawing.Point(464, 152);
             this.addToCart.Name = "addToCart";
             this.addToCart.Size = new System.Drawing.Size(149, 58);
             this.addToCart.TabIndex = 3;
@@ -148,11 +149,22 @@
             this.storeProfitValue.TabIndex = 10;
             this.storeProfitValue.Text = "$0.00";
             // 
+            // removeFromCartButton
+            // 
+            this.removeFromCartButton.Location = new System.Drawing.Point(464, 238);
+            this.removeFromCartButton.Name = "removeFromCartButton";
+            this.removeFromCartButton.Size = new System.Drawing.Size(149, 58);
+            this.removeFromCartButton.TabIndex = 11;
+            this.removeFromCartButton.Text = "<-- Remove From Cart";
+            this.removeFromCartButton.UseVisualStyleBackColor = true;
+            this.removeFromCartButton.Click += new System.EventHandler(this.removeFromCartButton_Click);
+            // 
             // ConsignmentShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 663);
+            this.Controls.Add(this.removeFromCartButton);
             this.Controls.Add(this.storeProfitValue);
             this.Controls.Add(this.storeProfitLabel);
             this.Controls.Add(this.VendorListBoxLabel);
@@ -186,6 +198,7 @@
         private System.Windows.Forms.ListBox vendorListBox;
         private System.Windows.Forms.Label storeProfitLabel;
         private System.Windows.Forms.Label storeProfitValue;
+        private System.Windows.Forms.Button removeFromCartButton;
     }
 }
 
