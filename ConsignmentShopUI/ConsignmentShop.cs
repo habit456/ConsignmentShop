@@ -43,6 +43,8 @@ namespace ConsignmentShopUI
 
             vendorListBox.DisplayMember = "Display";
             vendorListBox.ValueMember = "Display";
+
+            VendorListBoxLabel.Visible = false;
         }
 
         private void SetupData()
@@ -195,6 +197,16 @@ namespace ConsignmentShopUI
                 item.InCart = false;
                 cartBinding.ResetBindings(false);
             }
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            // storeInfoPanel.Visible = false;
+        }
+
+        private void storeInfoButton_Click(object sender, EventArgs e)
+        {
+            // storeInfoPanel.Visible = true;
         }
     }
 }

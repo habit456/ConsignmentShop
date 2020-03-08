@@ -35,11 +35,11 @@
             this.shoppingCartListBoxLabel = new System.Windows.Forms.Label();
             this.shoppingCartListBox = new System.Windows.Forms.ListBox();
             this.makePurchase = new System.Windows.Forms.Button();
-            this.VendorListBoxLabel = new System.Windows.Forms.Label();
+            this.removeFromCartButton = new System.Windows.Forms.Button();
             this.vendorListBox = new System.Windows.Forms.ListBox();
+            this.VendorListBoxLabel = new System.Windows.Forms.Label();
             this.storeProfitLabel = new System.Windows.Forms.Label();
             this.storeProfitValue = new System.Windows.Forms.Label();
-            this.removeFromCartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // headerText
@@ -110,15 +110,15 @@
             this.makePurchase.UseVisualStyleBackColor = true;
             this.makePurchase.Click += new System.EventHandler(this.makePurchase_Click);
             // 
-            // VendorListBoxLabel
+            // removeFromCartButton
             // 
-            this.VendorListBoxLabel.AutoSize = true;
-            this.VendorListBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VendorListBoxLabel.Location = new System.Drawing.Point(32, 415);
-            this.VendorListBoxLabel.Name = "VendorListBoxLabel";
-            this.VendorListBoxLabel.Size = new System.Drawing.Size(76, 20);
-            this.VendorListBoxLabel.TabIndex = 8;
-            this.VendorListBoxLabel.Text = "Vendors";
+            this.removeFromCartButton.Location = new System.Drawing.Point(464, 238);
+            this.removeFromCartButton.Name = "removeFromCartButton";
+            this.removeFromCartButton.Size = new System.Drawing.Size(149, 58);
+            this.removeFromCartButton.TabIndex = 11;
+            this.removeFromCartButton.Text = "<-- Remove From Cart";
+            this.removeFromCartButton.UseVisualStyleBackColor = true;
+            this.removeFromCartButton.Click += new System.EventHandler(this.removeFromCartButton_Click);
             // 
             // vendorListBox
             // 
@@ -128,6 +128,16 @@
             this.vendorListBox.Name = "vendorListBox";
             this.vendorListBox.Size = new System.Drawing.Size(398, 204);
             this.vendorListBox.TabIndex = 7;
+            // 
+            // VendorListBoxLabel
+            // 
+            this.VendorListBoxLabel.AutoSize = true;
+            this.VendorListBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VendorListBoxLabel.Location = new System.Drawing.Point(32, 415);
+            this.VendorListBoxLabel.Name = "VendorListBoxLabel";
+            this.VendorListBoxLabel.Size = new System.Drawing.Size(76, 20);
+            this.VendorListBoxLabel.TabIndex = 8;
+            this.VendorListBoxLabel.Text = "Vendors";
             // 
             // storeProfitLabel
             // 
@@ -149,26 +159,16 @@
             this.storeProfitValue.TabIndex = 10;
             this.storeProfitValue.Text = "$0.00";
             // 
-            // removeFromCartButton
-            // 
-            this.removeFromCartButton.Location = new System.Drawing.Point(464, 238);
-            this.removeFromCartButton.Name = "removeFromCartButton";
-            this.removeFromCartButton.Size = new System.Drawing.Size(149, 58);
-            this.removeFromCartButton.TabIndex = 11;
-            this.removeFromCartButton.Text = "<-- Remove From Cart";
-            this.removeFromCartButton.UseVisualStyleBackColor = true;
-            this.removeFromCartButton.Click += new System.EventHandler(this.removeFromCartButton_Click);
-            // 
             // ConsignmentShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 663);
+            this.ClientSize = new System.Drawing.Size(1109, 677);
+            this.Controls.Add(this.vendorListBox);
             this.Controls.Add(this.removeFromCartButton);
             this.Controls.Add(this.storeProfitValue);
             this.Controls.Add(this.storeProfitLabel);
             this.Controls.Add(this.VendorListBoxLabel);
-            this.Controls.Add(this.vendorListBox);
             this.Controls.Add(this.makePurchase);
             this.Controls.Add(this.shoppingCartListBoxLabel);
             this.Controls.Add(this.shoppingCartListBox);
@@ -194,11 +194,11 @@
         private System.Windows.Forms.Label shoppingCartListBoxLabel;
         private System.Windows.Forms.ListBox shoppingCartListBox;
         private System.Windows.Forms.Button makePurchase;
-        private System.Windows.Forms.Label VendorListBoxLabel;
+        private System.Windows.Forms.Button removeFromCartButton;
         private System.Windows.Forms.ListBox vendorListBox;
+        private System.Windows.Forms.Label VendorListBoxLabel;
         private System.Windows.Forms.Label storeProfitLabel;
         private System.Windows.Forms.Label storeProfitValue;
-        private System.Windows.Forms.Button removeFromCartButton;
     }
 }
 
