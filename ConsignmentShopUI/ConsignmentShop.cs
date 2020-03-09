@@ -16,6 +16,7 @@ namespace ConsignmentShopUI
         private Store store = new Store();
         private List<Item> shoppingCartData = new List<Item>();
         private decimal storeProfit = 0;
+        private bool extraDetails = false;
 
         BindingSource itemsBinding = new BindingSource();
         BindingSource cartBinding = new BindingSource();
@@ -44,7 +45,26 @@ namespace ConsignmentShopUI
             vendorListBox.DisplayMember = "Display";
             vendorListBox.ValueMember = "Display";
 
-            VendorListBoxLabel.Visible = false;
+            
+            ExtraDetailsVisibility(false);
+        }
+
+        private void ExtraDetailsVisibility(bool v)
+        {
+            vendorListBoxLabel.Visible = v;
+            vendorListBox.Visible = v;
+            storeProfitLabel.Visible = v;
+            storeProfitValue.Visible = v;
+
+            if (v)
+            {
+                extraDetails = true;
+                Height = 800;
+            } else
+            {
+                extraDetails = false;
+                Height = 500;
+            }
         }
 
         private void SetupData()
@@ -199,14 +219,16 @@ namespace ConsignmentShopUI
             }
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void storeInfoButton_Click_1(object sender, EventArgs e)
         {
-            // storeInfoPanel.Visible = false;
-        }
-
-        private void storeInfoButton_Click(object sender, EventArgs e)
-        {
-            // storeInfoPanel.Visible = true;
+            if (!extraDetails)
+            {
+                ExtraDetailsVisibility(true);
+            }
+            else
+            {
+                ExtraDetailsVisibility(false);
+            }
         }
     }
 }
